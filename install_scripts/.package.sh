@@ -5,11 +5,15 @@ if_not_dir_create () {
   mkdir -p "$1"
   fi
 }
-
-declare -a outputs=("deb" "rpm" "sh")
-declare -a pypacks=("astral" "requests" "tz" "tzlocal" "schedule")
+#distro=$(`( lsb_release -ds || cat /etc/*release || uname -om `) 2>/dev/null | head -n1 | awk '{print $1;}' | tr -d \")
+declare -a outputs=("deb" "rpm")
+#if [ "$distro" == "Fedora" ]; then
+	declare -a pypacks=("astral" "requests" "dateutil" "tzlocal" "APScheduler")
+#else
+#	declare -a pypacks=("astral" "requests" "tz" "tzlocal" "schedule")
+#fi
 declare -a otherdeps=("python3-pip")
-declare -a python_versions=("3.5" "3.6")
+declare -a python_versions=("3.7")
 
 declare -a original_files=(*)
 
